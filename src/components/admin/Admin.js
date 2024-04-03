@@ -21,8 +21,10 @@ const Admin = () => {
         e.preventDefault();
 
         const resolvedReport = report.find(item => item._id === id);
+
+        console.log(e.target.value)
         
-        resolvedReport.status = "resolved"
+        resolvedReport.status = e.target.value
         
         axios
         .put(`http://localhost:3005/api/report/${id}`, resolvedReport)
@@ -32,8 +34,6 @@ const Admin = () => {
         .catch((err) => {
             console.log(err)
         })
-
-        // console.log(resolvedReport)
     }
 
     return ( 
@@ -55,7 +55,9 @@ const Admin = () => {
                     <td>{data.title}</td>
                     <td>{data.type}</td>
                     <td >{data.status}</td>
-                    <td><Button onClick={(e) => onResolved(e, data._id)}>resolved</Button></td>
+                    <td><Button onClick={(e) => onResolved(e, data._id)} value="Investigating">Investigating</Button></td>
+                    <td><Button onClick={(e) => onResolved(e, data._id)} value="Rejected">rejected</Button></td>
+                    <td><Button onClick={(e) => onResolved(e, data._id)} value="Resolved">resolved</Button></td>
                 </tr>
             )
             }

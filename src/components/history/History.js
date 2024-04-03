@@ -1,6 +1,8 @@
 import Table from 'react-bootstrap/Table';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 
 const History = ({user}) => {
@@ -22,7 +24,28 @@ const History = ({user}) => {
         });
     }, [isUserUndefined])
 
-    console.log(user)
+
+    const handleDelete = async (e, id) => {
+      e.preventDefault();
+
+      try {
+        await axios.delete(`http://localhost:3005/api/report/${id}`)
+        .then( res => {
+          const newReport = [...report];
+  
+            setReport(newReport.filter( del => del._id !== res.data._id))
+            // console.log(res)
+        }
+        );
+
+
+        // setReport();
+        
+      } catch (error) {
+        toast.error('Error deleting document')
+        console.error('Error deleting document:', error);
+      }
+    };
 
 
 
@@ -47,6 +70,7 @@ const History = ({user}) => {
                     <td>{data.title}</td>
                     <td>{data.type}</td>
                     <td>{data.status}</td>
+                    <td><Button disabled={data.status === "pending"}  onClick={ (e) => handleDelete(e, data._id) }>Delete</Button></td>
                 </tr>
             )
           }
