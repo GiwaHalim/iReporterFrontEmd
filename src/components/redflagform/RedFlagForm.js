@@ -45,9 +45,26 @@ const RedFlagForm = ({user}) => {
             description: report.description,
           })
 
-         result.error ?  toast.error(result.error.message) :
+          if(result.error) return toast.error(result.error.message) 
 
-          await axios.post('http://localhost:3005/api/report', {...report, type: "Red Flag", userId: user }).then(toast.success('submitted')).catch( err => {toast.error('Error ')})
+        try{
+            await axios.post('http://localhost:3005/api/report', {...report, type:"Intervention", userId: user})
+            .then(res => {
+                toast.success('submitted')
+                setReport(
+                    {
+                        title: "",
+                        description: "",
+                    }
+                )
+            })
+        }catch (err){
+            toast.error('Encounterd an error')
+        }
+
+        //  result.error ?  toast.error(result.error.message) :
+
+        //   await axios.post('http://localhost:3005/api/report', {...report, type: "Red Flag", userId: user }).then(toast.success('submitted')).catch( err => {toast.error('Error ')})
 
 
 

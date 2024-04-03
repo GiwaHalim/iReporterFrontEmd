@@ -36,12 +36,7 @@ const History = ({user}) => {
             setReport(newReport.filter( del => del._id !== res.data._id))
             // console.log(res)
         }
-        );
-
-
-        // setReport();
-        
-      } catch (error) {
+        )} catch (error) {
         toast.error('Error deleting document')
         console.error('Error deleting document:', error);
       }
