@@ -49,7 +49,7 @@ const InterVentionForm = ({user}) => {
         if(result.error) return toast.error(result.error.message) 
 
         try{
-            await axios.post('http://localhost:3005/api/report', {...report, type:"Intervention", userId: user})
+            await axios.post('https://ireporterbackend.onrender.com/api/report', {...report, type:"Intervention", userId: user})
             .then(res => {
                 toast.success('submitted')
                 setReport(
@@ -62,7 +62,6 @@ const InterVentionForm = ({user}) => {
         }catch (err){
             toast.error('Encounterd an error')
         }
-        //   await axios.post('http://localhost:3005/api/report', {...report, type:"Intervention", userId: user}).then(toast.success('submitted')).catch( err => {toast.error('Error ')})
 
 
 

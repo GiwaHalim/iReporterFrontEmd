@@ -8,7 +8,7 @@ const Admin = () => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:3005/api/report")
+        .get("https://ireporterbackend.onrender.com/api/report")
         .then( res => {
             setReport(res.data)
         })
@@ -27,7 +27,7 @@ const Admin = () => {
         resolvedReport.status = e.target.value
         
         axios
-        .put(`http://localhost:3005/api/report/${id}`, resolvedReport)
+        .put(`https://ireporterbackend.onrender.com/api/report/${id}`, resolvedReport)
         .then( res => {
             console.log(res)
         })

@@ -15,7 +15,7 @@ const History = ({user}) => {
         if (user === undefined) return;
   
         axios
-        .get(`http://localhost:3005/api/report/${user}`)
+        .get(`https://ireporterbackend.onrender.com/api/report/${user}`)
         .then( res => {
             setReport(res.data)
         })
@@ -29,7 +29,7 @@ const History = ({user}) => {
       e.preventDefault();
 
       try {
-        await axios.delete(`http://localhost:3005/api/report/${id}`)
+        await axios.delete(`https://ireporterbackend.onrender.com/api/report/${id}`)
         .then( res => {
           const newReport = [...report];
   

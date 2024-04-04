@@ -48,7 +48,7 @@ const RedFlagForm = ({user}) => {
           if(result.error) return toast.error(result.error.message) 
 
         try{
-            await axios.post('http://localhost:3005/api/report', {...report, type:"Intervention", userId: user})
+            await axios.post('https://ireporterbackend.onrender.com/api/report', {...report, type:"Intervention", userId: user})
             .then(res => {
                 toast.success('submitted')
                 setReport(
