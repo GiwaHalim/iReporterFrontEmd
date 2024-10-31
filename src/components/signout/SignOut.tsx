@@ -6,7 +6,7 @@ const SignOut = () => {
     // const navigate = useNavigate()
     useEffect(() =>{
         localStorage.removeItem("token")
-
+// @ts-ignore
       window.location = "/"
         
     }, [])

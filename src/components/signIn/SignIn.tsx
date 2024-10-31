@@ -3,13 +3,12 @@ import axios from 'axios';
 import { useState } from 'react';
 import joi from 'joi'
 import { toast } from 'react-toastify';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 
 
 function SignIn() {
 
-  const navigate = useNavigate();
 
 const[loginDetails, setLoginDetails] = useState({
     email:"",
@@ -56,12 +55,11 @@ const onSignIn = async (e) => {
   message.error ? toast.error(message.error.details[0].message) :
 
 
-  await axios.post('https://ireporterbackend.onrender.com/api/auth', loginDetails).then((res) => {
+  await axios.post('http://localhost:3005/api/auth', loginDetails).then((res) => {
       localStorage.setItem('token', res.data.token );
       toast.success('logged in');
+      // @ts-ignore
       window.location = "/"
-      
-
   }).catch( err => (
     toast.error(err.response.data)
     ))

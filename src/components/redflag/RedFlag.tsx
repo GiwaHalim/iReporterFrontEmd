@@ -1,5 +1,6 @@
 import Creator from "../creator tags/Creator";
-import redFlag from "../../images/redflag.png"
+
+
 
 const RedFlag = ({user}) => {
     
@@ -10,8 +11,6 @@ const RedFlag = ({user}) => {
             instruction="Create a complaint"
             user={user}
             type="red-flag"
-
-
         />
      );
 }

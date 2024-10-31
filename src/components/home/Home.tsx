@@ -1,12 +1,15 @@
 import Intervention from "../intervention/Intervention";
 import RedFlag from "../redflag/RedFlag";
 import { Row,Col } from "react-bootstrap";
+import React from 'react'
 
 
+interface User{
+    user: string | null
+}
 
 
-
-const Home = ({user}) => {
+const Home: React.FC<User> = ({user}) => {
 
     return ( 
         <Row className="justify-content-center">

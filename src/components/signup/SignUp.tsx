@@ -96,11 +96,11 @@ const  onSignUp = async (e) =>{
 
   message.error ? toast.error(message.error.details[0].message) : 
 
-  await axios.post('https://ireporterbackend.onrender.com/api/user', user).then((res)=> {
+  await axios.post('http://localhost:3005/api/user', user).then((res)=> {
     localStorage.setItem('token', res.data.token );
     console.log(res)
     toast.success('User Created')
-    window.location = "/"
+    // window.location = "/"
 
 }).catch( err => (toast.error(err.response.data)))
 

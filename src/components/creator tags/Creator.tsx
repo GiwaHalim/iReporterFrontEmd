@@ -1,7 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const Creator = ({title, text, instruction, variant, type, user}) => {
+const Creator = ({title, text, instruction, type, user}) => {
   const navigate = useNavigate()
 
 

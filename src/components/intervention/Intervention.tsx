@@ -1,5 +1,4 @@
 import Creator from "../creator tags/Creator";
-import intervention from "../../images/intervention.jpg"
 
 const Intervention = ({user}) => {
     return ( 
@@ -10,7 +9,6 @@ const Intervention = ({user}) => {
             user={user}
             type="intervention"
             
-
         />
      );
 }

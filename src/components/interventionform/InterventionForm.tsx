@@ -3,9 +3,10 @@ import { useState } from "react";
 import Joi from "joi";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { type } from "@testing-library/user-event/dist/type";
 
 
-const RedFlagForm = ({user}) => {
+const InterVentionForm = ({user}) => {
 
     const[report, setReport] = useState({
         title: "",
@@ -45,10 +46,11 @@ const RedFlagForm = ({user}) => {
             description: report.description,
           })
 
-          if(result.error) return toast.error(result.error.message) 
+        if(result.error) return toast.error(result.error.message) 
 
         try{
-            await axios.post('https://ireporterbackend.onrender.com/api/report', {...report, type:"Intervention", userId: user})
+            const jwt = localStorage.getItem('token');
+            await axios.post('http://localhost:3005/api/report', {...report, type:"Intervention", userId: user, token: jwt})
             .then(res => {
                 toast.success('submitted')
                 setReport(
@@ -62,16 +64,12 @@ const RedFlagForm = ({user}) => {
             toast.error('Encounterd an error')
         }
 
-        //  result.error ?  toast.error(result.error.message) :
-
-        //   await axios.post('http://localhost:3005/api/report', {...report, type: "Red Flag", userId: user }).then(toast.success('submitted')).catch( err => {toast.error('Error ')})
-
 
 
     }
     return ( 
         <>
-        <h1>Red Flag Report</h1>
+        <h1>Intervention</h1>
         <Form>
             <Form.Group className="mb-5">
                 <Form.Label>Title</Form.Label>
@@ -91,4 +89,4 @@ const RedFlagForm = ({user}) => {
      );
 }
  
-export default RedFlagForm;
+export default InterVentionForm;
